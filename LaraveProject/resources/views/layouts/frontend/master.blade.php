@@ -48,6 +48,7 @@
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="{{URL::to('frontend/assets/css/style.css')}}">
+<link rel="stylesheet" href="{{URL::to('frontend/assets/css/custom.css')}}">
     <!-- Livewire Styles -->
 
 </head>
@@ -58,7 +59,7 @@
                 <!-- Main Wrapper -->
             <div class="main-wrapper">
                     <!-- Header -->
-<!-- /Header -->
+
 
     <!-- Header -->
     <header class="header-three">
@@ -86,71 +87,127 @@
 
     @yield('content')
 
+               @if(!Request::is('/'))
+                  <footer class="footer">
 
-    <footer class="footer footer-three">
+                    <!-- Footer Top -->
+                    <div class="footer-top">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6">
 
+                                    <!-- Footer Widget -->
+                                    <div class="footer-widget footer-about">
+                                        <div class="footer-logo">
+                                            <img src="{{asset('frontend/assets/img/logo.svg')}}" alt="logo">
+                                        </div>
+                                        <div class="footer-about-content">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris</p>
+                                        </div>
+                                    </div>
+                                    <!-- /Footer Widget -->
 
-        <!-- Footer Bottom -->
-        <div class="footer-three-bottom" data-aos="fade-up">
-            <div class="container">
+                                </div>
 
-                <!-- Copyright -->
-                <div class="copyright-three">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="social-icon-three">
-                                <h6>Connect Socially</h6>
-                                <ul>
-                                    <li>
-                                        <a href="#" target="_blank" class="feather-facebook-icon">
-                                            <i class="feather-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank" class="feather-twitter-icon">
-                                            <i class="feather-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank" class="feather-linkedin-icon">
-                                            <i class="feather-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank" class="feather-youtube-icon">
-                                            <i class="feather-youtube"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="privacy-policy-three">
-                                <ul>
-                                    <li><a href="https://dreamslms.dreamstechnologies.com/laravel/public/term-condition">Terms & Condition</a></li>
-                                    <li><a href="https://dreamslms.dreamstechnologies.com/laravel/public/privacy-policy">Privacy Policy</a></li>
-                                    <li><a href="https://dreamslms.dreamstechnologies.com/laravel/public/support">Contact Us</a></li>
-                                </ul>
-                            </div>
-                            <div class="copyright-text-three">
-                                <p class="mb-0">&copy;
-                                    <script>
-                                        document.write(new Date().getFullYear())
-                                    </script> DreamsLMS. All rights reserved.
-                                </p>
+                                <div class="col-lg-2 col-md-6">
+
+                                    <!-- Footer Widget -->
+                                    <div class="footer-widget footer-menu">
+                                        <h2 class="footer-title">For Instructor</h2>
+                                        <ul>
+                                            <li><a href="instructor-profile.html">Profile</a></li>
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="register.html">Register</a></li>
+                                            <li><a href="instructor-list.html">Instructor</a></li>
+                                            <li><a href="deposit-instructor-dashboard.html"> Dashboard</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- /Footer Widget -->
+
+                                </div>
+
+                                <div class="col-lg-2 col-md-6">
+
+                                    <!-- Footer Widget -->
+                                    <div class="footer-widget footer-menu">
+                                        <h2 class="footer-title">For Student</h2>
+                                        <ul>
+                                            <li><a href="student-profile.html">Profile</a></li>
+                                            <li><a href="login.html">Login</a></li>
+                                            <li><a href="register.html">Register</a></li>
+                                            <li><a href="students-list.html">Student</a></li>
+                                            <li><a href="deposit-student-dashboard.html"> Dashboard</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- /Footer Widget -->
+
+                                </div>
+
+                                <div class="col-lg-4 col-md-6">
+
+                                    <!-- Footer Widget -->
+                                    <div class="footer-widget footer-contact">
+                                        <h2 class="footer-title">News letter</h2>
+                                        <div class="news-letter">
+                                            <form>
+                                                <input type="text" class="form-control" placeholder="Enter your email address" name="email">
+                                            </form>
+                                        </div>
+                                        <div class="footer-contact-info">
+                                            <div class="footer-address">
+                                                <img src="{{asset('frontend/assets/img/icon/icon-20.svg')}}" alt="" class="img-fluid">
+                                                <p> 3556  Beech Street, San Francisco,<br> California, CA 94108 </p>
+                                            </div>
+                                            <p>
+                                                <img src="{{asset('frontend/assets/img/icon/icon-19.svg')}}" alt="" class="img-fluid">
+                                                dreamslms@example.com
+                                            </p>
+                                            <p class="mb-0">
+                                                <img src="{{asset('frontend/assets/img/icon/icon-21.svg')}}" alt="" class="img-fluid">
+                                                +19 123-456-7890
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- /Footer Widget -->
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /Copyright -->
+                    <!-- /Footer Top -->
 
-            </div>
-        </div>
-        <!-- /Footer Bottom -->
+                    <!-- Footer Bottom -->
+                    <div class="footer-bottom">
+                        <div class="container">
 
-    </footer>
-    <!-- /Footer -->
-        </div>
-    <!-- /Main Wrapper -->
-    <!-- jQuery -->
+                            <!-- Copyright -->
+                            <div class="copyright">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="privacy-policy">
+                                            <ul>
+                                                <li><a href="term-condition.html">Terms</a></li>
+                                                <li><a href="privacy-policy.html">Privacy</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="copyright-text">
+                                            <p class="mb-0">© 2023 DreamsLMS. All rights reserved.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Copyright -->
+
+                        </div>
+                    </div>
+                    <!-- /Footer Bottom -->
+
+                </footer>
+                @endif
+
 <script src="{{URL::to('frontend/assets/js/jquery-3.6.0.min.js')}}"></script>
 
 
@@ -161,6 +218,7 @@
 <script src="{{URL::to('frontend/assets/js/jquery.waypoints.js')}}"></script>
 <script src="{{URL::to('frontend/assets/js/jquery.counterup.min.js')}}"></script>
 
+@yield('frontendscript')
 <!-- Select2 JS -->
 <script src="{{URL::to('frontend/assets/plugins/select2/js/select2.min.js')}}"></script>
 

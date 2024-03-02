@@ -13,7 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('courses', function (Blueprint $table) {
+            $table->dropColumn('whoShouldAttend');
+            $table->dropColumn('infoFunding');
+        });
     }
 
     /**
@@ -23,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('courses', function (Blueprint $table) {
+            $table->string('whoShouldAttend');
+            $table->string('infoFunding');
+        });
     }
 };

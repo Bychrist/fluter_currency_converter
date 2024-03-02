@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseDate;
+use App\Models\CourseTime;
+use App\Models\ModeOfTraining;
+use App\Models\Participant;
+use App\Models\Sponsorship;
+use App\Models\Trainers;
 use Illuminate\Http\Request;
 
 class FrontEndController extends Controller
@@ -24,13 +30,40 @@ class FrontEndController extends Controller
     {
             try {
 
-                $getCourses = Course::paginate(10);
-                return view('catalogue',compact('getCourses'));
+                $getCourses = Course::orderBy('created_at')->paginate(10);
+                $getCourseCount = Course::all()->count();
+                $getTrainers = Trainers::all();
+
+
+
+                return view('catalogue',compact('getCourses','getCourseCount','getTrainers'));
 
             } catch (\Throwable $th) {
-                //throw $th;
+                 return redirect()->back()->with(["error" => $th->getMessage() ]);
             }
 
+    }
+
+
+
+    public function course($slug)
+    {
+        try
+        {
+
+           $course = Course::where('slug',$slug)->first();
+           $modeOfTraining = ModeOfTraining::all();
+           $date = CourseDate::all();
+           $time = CourseTime::all();
+           $noPart = Participant::all();
+           $sponsor = Sponsorship::all();
+           return view('coursedetail',compact('course','modeOfTraining','date','time','noPart','sponsor'));
+
+        }
+        catch(\Throwable $th)
+        {
+            return redirect()->back()->with(["error" => "An error has occured retrieving course details"]);
+        }
     }
 
 }

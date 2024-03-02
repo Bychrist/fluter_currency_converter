@@ -9,11 +9,11 @@
 
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
-                    @if(isset($participant))
-                        <form class="user"  method="POST"  action="{{ route('participant.update',$participant->id) }}">
+                    @if(isset($date))
+                        <form class="user"  method="POST"  action="{{ route('training_date.update',$date->id) }}">
                             @method('PUT')
                             @else
-                                <form class="user"  method="POST"  action="{{ route('participant.store') }}">
+                                <form class="user"  method="POST"  action="{{ route('training_date.store') }}">
                                     @endif
 
 
@@ -22,10 +22,10 @@
                                         <div class="col-lg-12">
                                             <div class="p-5">
                                                 <div class="text-center">
-                                                    @if(isset($sponsorship))
-                                                        <h1 class="h4 text-gray-900 mb-4">Update Participant </h1>
+                                                    @if(isset($date))
+                                                        <h1 class="h4 text-gray-900 mb-4">Update Date </h1>
                                                     @else
-                                                        <h1 class="h4 text-gray-900 mb-4">Create Participant </h1>
+                                                        <h1 class="h4 text-gray-900 mb-4">Create Date </h1>
                                                     @endif
 
 
@@ -35,10 +35,10 @@
 
                                                 <div class="form-group">
 
-                                                    <input type="number" min="0" class="form-control form-control-user" aria-describedby="emailHelp"
-                                                           id="number" name="number" value="{{ isset($participant) ? $participant->number : old('number') }}"   />
+                                                    <input type="text"  class="form-control form-control-user" aria-describedby="emailHelp"
+                                                           id="date" name="date" value="{{ isset($date) ? $date->date : old('date') }}"   />
 
-                                                    <x-input-error :messages="$errors->get('number')" style="color:red;font-size:11px" class="mt-2" />
+                                                    <x-input-error :messages="$errors->get('date')" style="color:red;font-size:11px" class="mt-2" />
                                                 </div>
 
 
@@ -74,7 +74,8 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>Number</th>
+                            <th>Date</th>
+                            <th>Created Date</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -82,25 +83,26 @@
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>Number</th>
+                            <th>Date</th>
+                            <th>Created Date</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        @if ($participants->count() > 0)
-                            @foreach ($participants as $participant )
+                        @if ($dates->count() > 0)
+                            @foreach ($dates as $date )
                                 <tr>
-                                    <td>{{$participant->number}}</td>
-                                    <td>{{date('d-m-Y', strtotime($participant->created_at))}}</td>
+                                    <td>{{$date->date}}</td>
+                                    <td>{{date('d-m-Y', strtotime($date->created_at))}}</td>
                                     <td>
-                                        <a href="{{route('participant.edit',$participant->id)}}" class="btn btn-warning btn-circle">
+                                        <a href="{{route('training_date.edit',$date->id)}}" class="btn btn-warning btn-circle">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
                                     <td>
 
-                                        <form onSubmit="return confirm('Do you want to delete this course?') " action="{{ route('participant.destroy',$participant->id)}}" method="POST">
+                                        <form onSubmit="return confirm('Do you want to delete this date?') " action="{{ route('training_date.destroy',$date->id)}}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-circle">     <i class="fas fa-trash"></i></button>
