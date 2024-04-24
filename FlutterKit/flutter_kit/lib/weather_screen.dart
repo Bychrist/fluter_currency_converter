@@ -1,49 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_kit/variables.dart';
 
 class WeatherScreen extends StatelessWidget {
   const WeatherScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Widget weatherBox = const SizedBox(
-      width: 100,
-      child: Card(
-        elevation: 6,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Text(
-                '09.00',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Icon(
-                Icons.cloud,
-                size: 25.0,
-                color: Colors.white,
-              ),
-              Text(
-                '301.7',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -108,7 +71,7 @@ class WeatherScreen extends StatelessWidget {
                   )),
             ),
             const SizedBox(
-              height: 15.0,
+              height: 20.0,
             ),
             const Align(
               alignment: Alignment.bottomLeft,
@@ -128,19 +91,61 @@ class WeatherScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  weatherBox,
-                  weatherBox,
-                  weatherBox,
-                  weatherBox,
-                  weatherBox,
-                  weatherBox,
-                  weatherBox,
-                  weatherBox,
+                  weatherBox('37.81°F', '301.7'),
+                  weatherBox('40.08°F', '222,7'),
+                  weatherBox('45.41°F', '118.5'),
+                  weatherBox('38.01°F', '145.08'),
                 ],
               ),
             ),
-            const Placeholder(
-              fallbackHeight: 150,
+            const SizedBox(
+              height: 20.0,
+            ),
+            const Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: EdgeInsets.only(left: 10.0),
+                child: Text(
+                  'Additional Information',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 5.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                humidityWindPressure(
+                    'Humidity',
+                    const Icon(
+                      Icons.water_drop,
+                      size: 32.0,
+                      color: Colors.white,
+                    ),
+                    '94'),
+                humidityWindPressure(
+                    'Wind',
+                    const Icon(
+                      Icons.air_sharp,
+                      size: 32.0,
+                      color: Colors.white,
+                    ),
+                    '7.46'),
+                humidityWindPressure(
+                    'Pressure',
+                    const Icon(
+                      Icons.beach_access_rounded,
+                      size: 32.0,
+                      color: Colors.white,
+                    ),
+                    '1006'),
+              ],
             )
           ],
         ),
