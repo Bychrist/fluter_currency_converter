@@ -76,6 +76,7 @@ class _HomeState extends State<Home> {
                 icon: Icon(Icons.edit_location),
                 label: Text(
                   'Edit Location',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
               SizedBox(
@@ -89,6 +90,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(
                       fontSize: 28.0,
                       fontWeight: FontWeight.w400,
+                      color: Colors.white,
                       letterSpacing: 2.0,
                     ),
                   )
@@ -99,7 +101,10 @@ class _HomeState extends State<Home> {
               ),
               Text(
                 returnData['time'],
-                style: TextStyle(fontSize: 66.0, fontWeight: FontWeight.w900),
+                style: TextStyle(
+                    fontSize: 66.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w900),
               )
             ],
           ),
