@@ -44,28 +44,7 @@ class WeatherScreen extends StatelessWidget {
                       ),
                       child: const Padding(
                         padding: EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              '200.89° F',
-                              style: TextStyle(
-                                  fontSize: 32.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Icon(
-                              Icons.cloud,
-                              size: 64.0,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              'Rain',
-                              style: TextStyle(
-                                fontSize: 20.0,
-                              ),
-                            )
-                          ],
-                        ),
+                        child: WeatherScreenState(),
                       ),
                     ),
                   )),
