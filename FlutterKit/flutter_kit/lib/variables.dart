@@ -81,6 +81,7 @@ class WeatherScreenState extends StatefulWidget {
 
 class _WeatherScreenStateState extends State<WeatherScreenState> {
   double temp = 0;
+  String skyDescription = '';
   bool loading = true;
   @override
   void initState() {
@@ -93,10 +94,10 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
       String cityName = 'Lagos';
       final res = await http.get(
         Uri.parse(
-            'https://api.openweathermap.org/data/2.5/weather?q=$cityName&APPID=$apiKey'),
+            'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$apiKey'),
       );
 
-      final data = jsonDecode(res.body);
+      final data = json.decode(res.body);
       if (int.parse(data['cod'].toString()) != 200) {
         setState(() {
           loading = false;
@@ -106,7 +107,8 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
 
       setState(() {
         loading = false;
-        temp = data['main']['temp'];
+        temp = data['list'][0]['main']['temp'];
+        skyDescription = data['list'][1]['weather'][0]['main'];
       });
     } catch (e) {
       loading = false;
@@ -127,14 +129,16 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
-              const Icon(
-                Icons.cloud,
+              Icon(
+                skyDescription == 'Clouds' || skyDescription == 'Rain'
+                    ? Icons.cloud
+                    : Icons.sunny,
                 size: 64.0,
                 color: Colors.white,
               ),
-              const Text(
-                'Rain',
-                style: TextStyle(
+              Text(
+                skyDescription,
+                style: const TextStyle(
                   fontSize: 20.0,
                 ),
               )
