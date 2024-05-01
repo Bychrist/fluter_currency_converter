@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 const String apiKey = '77ea932bda6f72090d2504885334b7e0';
 dynamic data = "";
@@ -27,7 +28,7 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
 
   Future getCurrentWeather() async {
     try {
-      String cityName = 'Dubai';
+      String cityName = 'Moscow';
       final res = await http.get(
         Uri.parse(
             'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$apiKey'),
@@ -190,6 +191,8 @@ class _WeatherScreenStateState extends State<WeatherScreenState> {
 }
 
 Widget weatherBox(String text, String degree, String cloud) {
+  final time = DateFormat.Hm().format(DateTime.parse(text));
+
   return SizedBox(
     width: 100,
     child: Card(
@@ -201,7 +204,7 @@ Widget weatherBox(String text, String degree, String cloud) {
         child: Column(
           children: [
             Text(
-              text,
+              time,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16.0,
